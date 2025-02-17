@@ -2,101 +2,74 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="theme-color" content="#2ecc71">
-    <title>모바일 웹 예제</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 노치 대응 모바일 웹</title>
     <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html,
-    body {
-        background-color: #fff;
-    }
+        html, body {
+            height: 100%;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
+            font-family: Arial, sans-serif;
+        }
 
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            padding-top: env(safe-area-inset-top); /* iPhone 노치 대응 */
+        }
 
-    /* 상단 노치 영역 배경색 (헤더와 동일한 초록색) */
-    .safe-top {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: env(safe-area-inset-top, 20px);
-        background-color: #2ecc71; /* 초록색 */
-        z-index: 999;
-    }
+        header {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            width: 100%;
+            background: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-    /* 헤더 (sticky) */
-    .header {
-        position: sticky;
-        top: env(safe-area-inset-top, 0);
-        width: 100%;
-        background-color: #2ecc71; /* 초록색 */
-        color: white;
-        text-align: center;
-        padding: 15px;
-        font-size: 18px;
-        font-weight: bold;
-        z-index: 1000;
-    }
+        main {
+            flex: 1;
+            padding: 20px;
+            padding-top: 83px;
+            text-align: center;
+        }
 
-    /* 본문 */
-    .content {
-        padding: 20px;
-        height: 150vh; /* 스크롤 가능하도록 충분한 높이 설정 */
-        background-color: #f8f9fa;
-    }
-
-    /* 하단 버튼 (fixed) */
-    .bottom-btn {
-        position: fixed;
-        bottom: env(safe-area-inset-bottom, 0);
-        left: 0;
-        right: 0;
-        background-color: #9b59b6; /* 보라색 */
-        color: white;
-        padding: 15px 30px;
-        font-size: 16px;
-        font-weight: bold;
-        border: 0;
-        cursor: pointer;
-        z-index: 1000;
-    }
-
-    /* 하단 노치 영역 배경색 (버튼과 동일한 보라색) */
-    .safe-bottom {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: env(safe-area-inset-bottom, 20px);
-        background-color: #9b59b6; /* 보라색 */
-        z-index: 999;
-    }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-
-    <div class="safe-top"></div> <!-- 노치 영역 배경 -->
-
-    <div class="header">Header</div>
-
-    <div class="content">
-        <p>스크롤을 내려도 헤더는 고정됩니다.</p>
-        <p>하단 버튼은 항상 화면 아래 고정됩니다.</p>
+    <div class="container">
+        <header>
+            <h1>iPhone 노치 대응</h1>
+        </header>
+        <main>
+            <p>스크롤을 테스트해보세요!</p>
+            <p style="margin-top: 1000px;">여기까지 스크롤 가능</p>
+        </main>
+        <footer>
+            <p>&copy; 2025 모바일 웹</p>
+        </footer>
     </div>
-
-    <button class="bottom-btn">Button</button>
-
-    <div class="safe-bottom"></div> <!-- 하단 영역 배경 -->
-
 </body>
 </html>
